@@ -73,7 +73,7 @@ async def set_speed(request):
 
 async def rotate(request):
     direction = request.match_info['direction']
-    if direction == 'left':
+    if direction == 'right':
         set_side_mode('a', a_in1, a_in2, 'backward')
         set_side_mode('b', b_in1, b_in2, 'forward')
     else:
@@ -104,10 +104,10 @@ if __name__ == '__main__':
     b_in2 = OutputDevice(6)
 
     pwm_a = Servo(12, max_pulse_width=10/1000)
-    pwm_a.value = -1.
+    pwm_a.value = 0.
 
     pwm_b = Servo(13, max_pulse_width=10/1000)
-    pwm_b.value = -1.
+    pwm_b.value = 0.
 
     web.run_app(app)
 
